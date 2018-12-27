@@ -8,6 +8,8 @@
         return cache.addAll([
           '/',
           '/index.html',
+          'aframe.min.js',
+          'afram-ar.js'
           
         ]);
       })
