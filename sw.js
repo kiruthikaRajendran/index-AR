@@ -17,10 +17,7 @@ function registerServiceWorker() {
         return cache.addAll([
           '/',
           '/index.html',
-          '/about.html',
-          '/images/doggo.jpg',
-          '/styles/main.min.css',
-          '/scripts/main.min.js',
+          
         ]);
       })
     );
