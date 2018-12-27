@@ -2,7 +2,33 @@
 <html>
  
   <link rel="manifest" href ="manifest.json">
-  <script src="sw.js"></script>
+<script>
+function registerServiceWorker() {
+    // register sw script in supporting browsers
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js', { scope: '/' }).then(() => {
+        console.log('Service Worker registered successfully.');
+      }).catch(error => {
+        console.log('Service Worker registration failed:', error);
+      });
+    }
+  }
+  self.addEventListener('install', e => {
+    e.waitUntil(
+      // after the service worker is installed,
+      // open a new cache
+      caches.open('my-pwa-cache').then(cache => {
+        // add all URLs of resources we want to cache
+        return cache.addAll([
+          '/',
+          '/index.html',
+          
+        ]);
+      })
+    );
+   });
+  
+</script>
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
   <body style='margin : 0px; overflow: hidden;'>
