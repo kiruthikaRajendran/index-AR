@@ -4,8 +4,8 @@
   <link rel="manifest" href ="manifest.json">
 
   <script  src="sw.js" ></script>
-<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
+<script src="aframe.min.js"></script>
+<script src="afram-ar.js"> </script>
   <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
   	<a-marker preset="hiro">
@@ -14,5 +14,17 @@
   	<a-entity camera></a-entity>
     </a-scene>
   </body>
+  <script>
+    function registerServiceWorker() {
+    // register sw script in supporting browsers
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js', { scope: '/' }).then(() => {
+        console.log('Service Worker registered successfully.');
+      }).catch(error => {
+        console.log('Service Worker registration failed:', error);
+      });
+    }
+  }
+  </script>
   
 </html>
